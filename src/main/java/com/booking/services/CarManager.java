@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import com.booking.model.Car;
@@ -29,22 +28,18 @@ public class CarManager {
             try{
                 int minimumPrice = 999999999;
                 Car foundCar = null;
-                for(String currSupplier: supplierWithCars.keySet())
-                {
+                
+                for(String currSupplier: supplierWithCars.keySet()){
                 	ArrayList<Car> results = supplierWithCars.get(currSupplier);
                 	for(Car currCar : results)
-                	{
-                		if(currCar.getType().equals(currentCarCapacity.name()) && minimumPrice > currCar.getPrice())
-                		{
+                		if(currCar.getType().equals(currentCarCapacity.name()) && minimumPrice > currCar.getPrice()){
                 			minimumPrice = currCar.getPrice();
                 			foundCar = currCar;
                 		}
-                	}
                 }
+                
                 if(foundCar != null)
-                {
                 	cars.add(foundCar);
-                }
             }
             catch (NoSuchElementException e){
             }
